@@ -192,62 +192,62 @@ prevMappedValue=1;
     {
         if( mTouchCapStatus_Check( &CurrentButtonStatus, &CurrentButtonAsserts, &SliderValue ) )
         {
-            if((SliderValue>(prevValue+5)||SliderValue<(prevValue-5))&&zoomStartFlag==1)
+            if((SliderValue>(prevValue+5) || SliderValue < (prevValue - 5)) && zoomStartFlag == 1)
         {      // zoomStartFlag is inititated when the user makes one big movement in the clockwise direction, like moving from one button to another
 
-                UINT16 mappedValue=mapValue(SliderValue,CurrentButtonStatus);
-                if(printFlag==1&&CurrentButtonStatus!=0)
+                UINT16 mappedValue = mapValue(SliderValue, CurrentButtonStatus);
+                if(printFlag == 1&&CurrentButtonStatus != 0)
                 {
                             DebugPrint_Dec(mappedValue);
 
-                            ButtonPressed=CurrentButtonStatus;
+                            ButtonPressed = CurrentButtonStatus;
                             DebugPrint_Dec(ButtonPressed);
                             DebugPrint_Space();
                            
                 }
 
 
-              prevValue=SliderValue;
+              prevValue = SliderValue;
 
         }
-            else  if((SliderValue>(prevValue+5)||SliderValue<(prevValue-5))&&zoomOutStartFlag==1)
+            else  if((SliderValue > (prevValue + 5) || SliderValue < (prevValue - 5 )) && zoomOutStartFlag == 1)
         {
 // zoomOutStartFlag indicates if a big movement has been done in the anticlockwise direcion, like moving from one button to another
-                UINT16 mappedValue=mapValue(SliderValue,CurrentButtonStatus);
-                if(printFlag==1&&CurrentButtonStatus!=0)
+                UINT16 mappedValue = mapValue(SliderValue, CurrentButtonStatus);
+                if(printFlag == 1 && CurrentButtonStatus != 0)
                 {
                             DebugPrint_Dec(mappedValue);
-                            ButtonPressed=CurrentButtonStatus;
+                            ButtonPressed = CurrentButtonStatus;
                             DebugPrint_Dec(ButtonPressed);
                             DebugPrint_Char('#');
                          
                 }
 
 
-              prevValue=SliderValue;
+              prevValue = SliderValue;
 
         }
 
             if ((SliderValue < 3) & (CurrentButtonStatus == 0))
             {//nothing is being touched
-                  zoomStartFlag=0;
-                  prevButtonStatus=0;
-                  zoomOutStartFlag=0;
+                  zoomStartFlag = 0;
+                  prevButtonStatus = 0;
+                  zoomOutStartFlag = 0;
 
                 
             }else
             {
                 if (CurrentButtonStatus == 8)
                 {
-                    if(prevButtonStatus==4)
+                    if(prevButtonStatus == 4)
                     { //means a movement from 4 to 8 is made, hence a zooming gesture is in progress
-                        zoomStartFlag=1;
-                        zoomOutStartFlag=0;
+                        zoomStartFlag = 1;
+                        zoomOutStartFlag = 0;
                     }
-                    else if (prevButtonStatus==2)
+                    else if (prevButtonStatus == 2)
                     { //means a movement from 2 to 8 is made, a zoom out gesture is in progress.
-                      zoomStartFlag=0;
-                      zoomOutStartFlag=1;
+                      zoomStartFlag = 0;
+                      zoomOutStartFlag = 1;
                     }
                     //mOLED_Draw_Circle(55, 12, 5, 0);
                     mOLED_Draw_Circle(70, 12, 5, 0);
@@ -260,15 +260,15 @@ prevMappedValue=1;
                 }else if (CurrentButtonStatus == 4)
                 {
 
-                     if(prevButtonStatus==1)
+                     if(prevButtonStatus == 1)
                      {  //movement from 1 to 4 indicates a zoom gesture is in progress
-                         zoomStartFlag=1;
-                         zoomOutStartFlag=0;
+                         zoomStartFlag = 1;
+                         zoomOutStartFlag = 0;
                      }
-                    else if (prevButtonStatus==8)
+                    else if (prevButtonStatus == 8)
                     {
-                        zoomStartFlag=0;
-                        zoomOutStartFlag=1;
+                        zoomStartFlag = 0;
+                        zoomOutStartFlag = 1;
                     }
 
                     mOLED_Draw_Circle(55, 12, 5, 0);
@@ -277,30 +277,35 @@ prevMappedValue=1;
                     mOLED_Draw_Circle(70, 25, 5, 0);
 
                     mOLED_Draw_Circle(70, 12, 5, 0xFFFF);
-                    prevButtonStatus=CurrentButtonStatus;
+                    prevButtonStatus = CurrentButtonStatus;
                 }else if (CurrentButtonStatus == 2)
                 {
 
 
-                     if(prevButtonStatus==4)
+                     if(prevButtonStatus == 4)
                      {
-                           zoomStartFlag=1;
-                          zoomOutStartFlag=0;
+                           zoomStartFlag = 1;
+                          zoomOutStartFlag = 0;
                      }
-                    else if (prevButtonStatus==1)
-                    { zoomStartFlag=0; 
-                    zoomOutStartFlag=1;
+                    else if (prevButtonStatus == 1)
+                    { zoomStartFlag = 0; 
+                    zoomOutStartFlag = 1;
                     }
-                    prevButtonStatus=2;
+                    prevButtonStatus = 2;
 
 
                 }else if (CurrentButtonStatus == 1)
                 {
 
-                        if(prevButtonStatus==2)
-                        {  zoomStartFlag=1; zoomOutStartFlag=0;}
-                        else if (prevButtonStatus==4)//should this be 8?
-                        { zoomStartFlag=0; zoomOutStartFlag=1;}
+                        if(prevButtonStatus == 2)
+                        {  zoomStartFlag = 1; 
+                           zoomOutStartFlag = 0;
+                        }
+                        else if (prevButtonStatus == 4)//should this be 8?
+                        { 
+                        	zoomStartFlag=0; 
+                        	zoomOutStartFlag=1;
+                        }
 
                 //if current button is 1, check if previous button status was 2 in that case zoom should be initiated
                     
@@ -310,7 +315,7 @@ prevMappedValue=1;
 //                        zoomStartFlag=1;
 //
 //                    }
-                        prevButtonStatus=CurrentButtonStatus;
+                        prevButtonStatus = CurrentButtonStatus;
                     
                     
                 }
@@ -323,7 +328,7 @@ prevMappedValue=1;
                     mOLED_Draw_Circle(85-PV2, 40, 3, 0X3FF);
                 }else if (SliderValue < 0x50)
                 {
-                    PV1 = (SliderValue>>1) + 20;
+                    PV1 = (SliderValue >> 1) + 20;
                     mOLED_Draw_Circle(85-PV1, 50, 3, 0xFC00);
                 }
 
