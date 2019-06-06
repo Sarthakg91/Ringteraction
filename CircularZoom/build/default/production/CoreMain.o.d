@@ -1,0 +1,21 @@
+build/default/production/CoreMain.o:  \
+CoreMain.c  \
+ Microchip/Include/GenericTypeDefs.h  \
+mTouchConfig.h  \
+ Microchip/Include/Compiler.h  \
+HardwareProfile.h  \
+ mTouchCapLib/mTouchCapADC.h  \
+mTouchCapLib/mTouchCapAPI.h  \
+ mTouchCapLib//../mTouchConfig.h  \
+mTouchCapLib/mTouchCapLED.h  \
+ mTouchCapLib//../Microchip/Include/Compiler.h  \
+ mTouchCapLib//mTouchCapPhy.h  \
+mTouchCapLib//../mTouchConfig.h  \
+ mTouchCapLib//../HardwareProfile.h  \
+mTouchCapLib//mTouchCapTmr.h  \
+ mTouchCapLib//mTouchCapADC.h  \
+mTouchCapLib/mTouchCapAPP_DirectKeys.h  \
+ mTouchCapLib/mTouchCapStatus.h  \
+Microchip/Include/TimeDelay.h  \
+ Microchip/Include//GenericTypedefs.h  \
+main.h 
