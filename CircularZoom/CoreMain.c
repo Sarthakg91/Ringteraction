@@ -1,6 +1,7 @@
 /* 
  * File:   newmain.c
  * Author: MRush
+ * Modified: Sarthak
  */
 
 #include <stdio.h>
